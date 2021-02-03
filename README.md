@@ -1,48 +1,58 @@
-dwm - dynamic window manager
-============================
-dwm is an extremely fast, small, and dynamic window manager for X.
+# dwm
+This is my build of suckless [dwm](https://dwm.suckless.org). You might also be interested in my builds of [st](https://github.com/eremt/st) and [dmenu](https://github.com/eremt/dmenu).
 
+I've changed the `MODKEY` to `Windows key`:
+```bash
+# config.def.h
+#define MODKEY Mod4Mask
+```
+Patches added:
+- [attachaside](http://dwm.suckless.org/patches/attachaside/)
 
-Requirements
-------------
-In order to build dwm you need the Xlib header files.
+## Requirements
+Install the dependencies:
 
+**Debian/Ubuntu**
+```bash
+sudo apt install xorg build-essential libx11-dev libxft-dev libxinerama-dev
+```
+**Arch**
+```bash
+sudo pacman -S xorg xorg-xinit base-devel libx11 libxft libxinerama
+```
 
-Installation
-------------
-Edit config.mk to match your local setup (dwm is installed into
-the /usr/local namespace by default).
+## Installation
+Create a `~/.suckless` directory and clone this repository. Then build and install `dwm`:
+```bash
+mkdir -p ~/.suckless && \
+git clone https://github.com/eremt/dwm ~/.suckless/dwm && \
+cd ~/.suckless/dwm && sudo make clean install
+```
+Clone, build and install `st` and `dmenu`:
+```bash
+git clone https://github.com/eremt/st ~/.suckless/st && \
+cd ~/.suckless/st && sudo make clean install && \
+git clone https://github.com/eremt/dmenu ~/.suckless/dmenu && \
+cd ~/.suckless/dmenu && sudo make clean install
+```
 
-Afterwards enter the following command to build and install dwm (if
-necessary as root):
-
-    make clean install
-
-
-Running dwm
------------
-Add the following line to your .xinitrc to start dwm using startx:
-
-    exec dwm
-
-In order to connect dwm to a specific display, make sure that
-the DISPLAY environment variable is set correctly, e.g.:
-
-    DISPLAY=foo.bar:1 exec dwm
-
-(This will start dwm on display :1 of the host foo.bar.)
-
-In order to display status info in the bar, you can do something
-like this in your .xinitrc:
-
-    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-    do
-    	sleep 1
-    done &
-    exec dwm
-
-
-Configuration
--------------
-The configuration of dwm is done by creating a custom config.h
-and (re)compiling the source code.
+## Running dwm
+To start dwm on login add the following lines to your `~/.xinitrc`:
+```bash
+# ~/.xinitrc
+# display status info in the bar
+while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
+do
+  sleep 1
+done &
+# start dwm
+exec dwm
+```
+and the following to `~/.zprofile`:
+```bash
+# ~/.zprofile
+# startx on login
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
+fi
+```
