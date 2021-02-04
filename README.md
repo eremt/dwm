@@ -3,6 +3,7 @@ This is my build of suckless [dwm](https://dwm.suckless.org). You might also be 
 
 Patches added:
 - [attachaside](http://dwm.suckless.org/patches/attachaside/)
+- [noborder](http://dwm.suckless.org/patches/noborder/)
 
 Other than the patches I've added some keybindings:
 ```bash
