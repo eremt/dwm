@@ -4,10 +4,15 @@ This is my build of suckless [dwm](https://dwm.suckless.org). You might also be 
 Patches added:
 - [attachaside](http://dwm.suckless.org/patches/attachaside/)
 
-Other than the patches I've changed the `MODKEY` to `Windows key`:
+Other than the patches I've added some keybindings:
 ```bash
-# config.def.h
-#define MODKEY Mod4Mask
+// config.def.h
+#define MODKEY Mod4Mask // set MOD to Super key
+
+static Key keys[] = {
+  /* modifier         key   function    argument */
+  { MODKEY|ShiftMask, XK_w, killclient, {0} }, // MOD + SHIFT + W to kill window
+};
 ```
 
 ## Requirements
