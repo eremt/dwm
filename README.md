@@ -6,8 +6,8 @@ Patches added:
 
 Other than the patches I've added some keybindings:
 ```bash
-# config.def.h
-#define MODKEY Mod4Mask
+// config.def.h
+#define MODKEY Mod4Mask // set MOD to Super key
 
 static Key keys[] = {
   /* modifier         key   function    argument */
