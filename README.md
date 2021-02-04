@@ -1,13 +1,14 @@
 # dwm
 This is my build of suckless [dwm](https://dwm.suckless.org). You might also be interested in my builds of [st](https://github.com/eremt/st) and [dmenu](https://github.com/eremt/dmenu).
 
-I've changed the `MODKEY` to `Windows key`:
+Patches added:
+- [attachaside](http://dwm.suckless.org/patches/attachaside/)
+
+Other than the patches I've changed the `MODKEY` to `Windows key`:
 ```bash
 # config.def.h
 #define MODKEY Mod4Mask
 ```
-Patches added:
-- [attachaside](http://dwm.suckless.org/patches/attachaside/)
 
 ## Requirements
 Install the dependencies:
